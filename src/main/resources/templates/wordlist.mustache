@@ -1,0 +1,48 @@
+{{>layout/header}}
+<br/>
+<div class="col-12">
+    <select name="demo-category" id="demo-category">
+        <option value="">- 파트선택 -</option>
+        <option value="1">Manufacturing</option>
+        <option value="1">Shipping</option>
+        <option value="1">Administration</option>
+        <option value="1">Human Resources</option>
+    </select>
+</div>
+<h4>단어 목록</h4>
+<div class="table-wrapper">
+    <table class="alt">
+        <thead>
+        <tr>
+            <th>단어</th>
+            <th>의미</th>
+        </tr>
+        </thead>
+        <tbody id="toeicList">
+        {{#posts}}
+        <tr>
+            <td>{{word}}</td>
+            <td>{{meaning}}</td>
+        </tr>
+        {{/posts}}
+        </tbody>
+    </table>
+    <br/>
+    <ul class="pagination">
+        <li><span class="button disabled">Prev</span></li>
+        <li><a href="#" class="page active">1</a></li>
+        <li><a href="#" class="page">2</a></li>
+        <li><a href="#" class="page">3</a></li>
+        <li><span>&hellip;</span></li>
+        <li><a href="#" class="page">8</a></li>
+        <li><a href="#" class="page">9</a></li>
+        <li><a href="#" class="page">10</a></li>
+        <li><a href="#" class="button">Next</a></li>
+    </ul>
+    <br/>
+    <ul class="actions">
+        <li><a href="#" class="button primary">단어 업로드</a></li>
+        <li><a href="#" class="button icon solid fa-download">엑셀 업로드</a></li>
+    </ul>
+</div>
+{{>layout/sidebar}}
