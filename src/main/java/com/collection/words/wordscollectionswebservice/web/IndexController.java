@@ -17,9 +17,14 @@ public class IndexController {
         return "index";
     }
 
-    @GetMapping("/api/words/posts")
+    @GetMapping("/api/words/list")
     public String wordList(Model model){
         model.addAttribute("posts",postsService.findAllDesc());
         return "wordlist";
+    }
+
+    @GetMapping("/api/words/save")
+    public String wordSave(){
+        return "savepage";
     }
 }
