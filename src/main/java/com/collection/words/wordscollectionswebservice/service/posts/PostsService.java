@@ -25,11 +25,18 @@ public class PostsService {
     private final PostsRepository postsRepository;
 
     @Transactional
-    public List<PostsListResponseDto> findAllDesc(){
+    public List<PostsListResponseDto> findAllRand(){
         List<PostsListResponseDto> wordList = postsRepository.findAllRand().stream()
                 .map(PostsListResponseDto::new)
                 .collect(Collectors.toList());
         return wordList;
+    }
+
+    @Transactional
+    public List<PostsListResponseDto> findByCategory(String category){
+        return postsRepository.findByCategory(category).stream()
+                .map(PostsListResponseDto::new)
+                .collect(Collectors.toList());
     }
     @Transactional
     public Long save(PostsSaveRequestDto requestDto){

@@ -25,6 +25,9 @@ var main = {
                 $('#btn-mean').val("의미 보이기")
             }
         });
+        $('#word-category').on('change',function(){
+            _this.search();
+        });
     },
     save: function (){
         var data = {
@@ -70,7 +73,20 @@ var main = {
         }).fail(function (error){
             alert(JSON.stringify(error));
         });
-    }
+    },
+    search: function (){
+        $.ajax({
+            type: 'POST',
+            url: '/api/words/searchCategory',
+            dataType: 'String',
+            data: {
+                category :$('#word-category').val()
+            }
+        }).done(function(){
+        }).fail(function (error){
+            alert(JSON.stringify(error));
+        });
+    },
 };
 
 main.init();
