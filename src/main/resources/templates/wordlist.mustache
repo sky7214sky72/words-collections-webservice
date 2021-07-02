@@ -3,13 +3,13 @@
 <div class="col-12">
     <select name="demo-category" id="demo-category">
         <option value="">- 파트선택 -</option>
-        <option value="1">Manufacturing</option>
-        <option value="1">Shipping</option>
-        <option value="1">Administration</option>
-        <option value="1">Human Resources</option>
+        {{#posts}}
+        <option value="{{category}}">{{category}}</option>
+        {{/posts}}
     </select>
 </div>
 <h4>단어 목록</h4>
+<br/>
 <div class="table-wrapper">
     <table class="alt">
         <thead>
@@ -21,8 +21,8 @@
         <tbody id="toeicList">
         {{#posts}}
         <tr>
-            <td>{{word}}</td>
-            <td>{{meaning}}</td>
+            <td><p name="word">{{word}}</p></td>
+            <td><p name="meaning">{{meaning}}</p></td>
         </tr>
         {{/posts}}
         </tbody>
@@ -41,8 +41,17 @@
     </ul>
     <br/>
     <ul class="actions">
-        <li><a href="/api/words/savePage" class="button primary">단어 업로드</a></li>
-        <li><a href="#" class="button icon solid fa-download">엑셀 업로드</a></li>
+        <li><input type="button" value="단어 가리기" id = "btn-word" class="primary" /></li>
+        <li><input type="button" value="의미 가리기" id = "btn-mean" class="primary" /></li>
+    </ul>
+    <ul class="actions">
+        <li><a href="/api/words/save" class="button primary">단어 업로드</a></li>
+    </ul>
+    <ul class="actions">
+        <li>
+            <input type="file" accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" id="file" required/>
+        </li>
+        <li><input type="button" value="엑셀 업로드" id = "btn-excel" class="button icon solid fa-download" /></li>
     </ul>
 </div>
 {{>layout/sidebar}}

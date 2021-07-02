@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,9 +26,10 @@ public class PostsService {
 
     @Transactional
     public List<PostsListResponseDto> findAllDesc(){
-        return postsRepository.findAllDesc().stream()
+        List<PostsListResponseDto> wordList = postsRepository.findAllRand().stream()
                 .map(PostsListResponseDto::new)
                 .collect(Collectors.toList());
+        return wordList;
     }
     @Transactional
     public Long save(PostsSaveRequestDto requestDto){
