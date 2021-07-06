@@ -35,4 +35,10 @@ public class IndexController {
     public String wordSave(){
         return "savepage";
     }
+
+    @GetMapping("/api/chat/list")
+    public String chatPage(){
+        return "chatpage";
+    }
+
 }

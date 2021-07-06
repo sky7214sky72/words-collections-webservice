@@ -1,0 +1,23 @@
+{{>layout/header}}
+
+<h3>채팅</h3>
+<!-- Box -->
+<div class="box" id="chatting">
+
+</div>
+<div class="row gtr-uniform">
+    <div class="col-6 col-12-xsmall" id="yourName">
+        <input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
+        <ul class="actions">
+            <input type="button" value="name regist" id="button-name" class="primary" />
+        </ul>
+    </div>
+    <!-- Break -->
+    <div class="col-12" id="yourMsg">
+        <textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
+        <ul class="actions">
+            <li><input type="button" value="Send Message" id="button-send" class="primary" /></li>
+        </ul>
+    </div>
+</div>
+{{>layout/sidebar}}
