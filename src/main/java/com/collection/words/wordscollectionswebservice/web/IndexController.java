@@ -36,6 +36,11 @@ public class IndexController {
         return "savepage";
     }
 
+    @GetMapping("/api/video/list")
+    public String videoPage(){
+        return "videopage";
+    }
+
     @GetMapping("/api/chat/list")
     public String chatPage(){
         return "chatpage";
