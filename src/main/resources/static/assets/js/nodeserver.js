@@ -2,12 +2,13 @@ const http = require('http');
 const os = require('os');
 const socketIO = require('socket.io');
 const nodeStatic = require('node-static');
+const cors = require('cors');
 
 let fileServer = new(nodeStatic.Server)();
 let app = http.createServer((req,res)=>{
     fileServer.serve(req,res);
+    res.setHeader('access-control-allow-origin','*');
 }).listen(82);
-
 let io = socketIO.listen(app);
 io.sockets.on('connection',socket=>{
     function log() {
