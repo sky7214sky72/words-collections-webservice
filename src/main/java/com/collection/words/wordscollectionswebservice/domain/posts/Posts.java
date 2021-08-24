@@ -22,12 +22,12 @@ public class Posts extends BaseTimeEntity {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String meaning;
 
-    private String category;
+/*    private String category;*/
 
     @Builder
-    public Posts(String word, String meaning, String category){
+    public Posts(String word, String meaning/*, String category*/){
         this.word = word;
         this.meaning = meaning;
-        this.category = category;
+/*        this.category = category;*/
     }
 }

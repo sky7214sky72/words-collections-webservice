@@ -1,13 +1,13 @@
 {{>layout/header}}
 <br/>
-<div class="col-12">
+<!--<div class="col-12">
     <select name="demo-category" id="word-category">
         <option value="">- 파트선택 -</option>
-        {{#posts}}
-        <option value="{{category}}">{{category}}</option>
-        {{/posts}}
+        #posts}}
+        <option value="category}}">category}}</option>
+        /posts}}
     </select>
-</div>
+</div>-->
 <h4>단어 목록</h4>
 <br/>
 <div class="table-wrapper">
@@ -28,7 +28,7 @@
         </tbody>
     </table>
     <br/>
-    <ul class="pagination">
+<!--    <ul class="pagination">
         <li><span class="button disabled">Prev</span></li>
         <li><a href="#" class="page active">1</a></li>
         <li><a href="#" class="page">2</a></li>
@@ -39,7 +39,7 @@
         <li><a href="#" class="page">10</a></li>
         <li><a href="#" class="button">Next</a></li>
     </ul>
-    <br/>
+    <br/>-->
     <ul class="actions">
         <li><input type="button" value="단어 가리기" id = "btn-word" class="primary" /></li>
         <li><input type="button" value="의미 가리기" id = "btn-mean" class="primary" /></li>
@@ -51,7 +51,14 @@
         <li>
             <input type="file" accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" id="file" required/>
         </li>
-        <li><input type="button" value="엑셀 업로드" id = "btn-excel" class="button icon solid fa-download" /></li>
+        <li>
+            <input type="button" value="엑셀 업로드" id = "btn-excel" class="button icon solid fa-download" />
+        </li>
+        <li>
+            <form action="/api/words/excelDown" method="post">
+                <input type="submit" value="양식 다운로드" id = "btn-xlsdown" class="button icon solid fa-download" />
+            </form>
+        </li>
     </ul>
 </div>
 {{>layout/sidebar}}

@@ -6,6 +6,7 @@ import com.collection.words.wordscollectionswebservice.web.dto.PostsSaveRequestD
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
@@ -32,12 +34,12 @@ public class PostsService {
         return wordList;
     }
 
-    @Transactional
+/*    @Transactional
     public List<PostsListResponseDto> findByCategory(String category){
         return postsRepository.findByCategory(category).stream()
                 .map(PostsListResponseDto::new)
                 .collect(Collectors.toList());
-    }
+    }*/
     @Transactional
     public Long save(PostsSaveRequestDto requestDto){
         return postsRepository.save(requestDto.toEntity()).getId();
@@ -59,16 +61,15 @@ public class PostsService {
         }
 
         Sheet worksheet = workbook.getSheetAt(0);
-
         for(int i=1; i< worksheet.getPhysicalNumberOfRows();i++){
             Row row = worksheet.getRow(i);
-
             PostsSaveRequestDto requestDto = PostsSaveRequestDto.builder()
                     .word(row.getCell(0).getStringCellValue())
                     .meaning(row.getCell(1).getStringCellValue())
-                    .category(row.getCell(2).getStringCellValue())
+/*                    .category(row.getCell(2).getStringCellValue())*/
                     .build();
             save(requestDto);
         }
     }
+
 }

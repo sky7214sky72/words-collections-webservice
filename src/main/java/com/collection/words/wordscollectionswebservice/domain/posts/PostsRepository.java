@@ -9,5 +9,5 @@ public interface PostsRepository extends JpaRepository<Posts, Long> {
     @Query(value = "SELECT p.* FROM Posts p ORDER BY RANDOM()", nativeQuery = true)
     List<Posts> findAllRand();
 
-    List<Posts> findByCategory(String category);
+/*    List<Posts> findByCategory(String category);*/
 }

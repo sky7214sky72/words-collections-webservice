@@ -42,7 +42,7 @@ public class PostsApiControllerTest {
         PostsSaveRequestDto requestDto = PostsSaveRequestDto.builder()
                 .word(word)
                 .meaning(meaning)
-                .category("part1")
+/*                .category("part1")*/
                 .build();
 
         String url = "http://localhost:"+ port + "/api/words/posts";

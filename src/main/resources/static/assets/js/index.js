@@ -7,6 +7,9 @@ var main = {
         $('#btn-excel').on('click', function(){
             _this.saveExcel();
         });
+        $('#btn-back').on('click', function () {
+            window.location.href = '/api/words/list';
+        });
         $('#btn-word').on('click', function(){
             if(!$('p[name="word"]').is(':visible')){
                 $('p[name="word"]').show();
@@ -33,7 +36,7 @@ var main = {
         var data = {
             word : $('#demo-word').val(),
             meaning : $('#demo-meaning').val(),
-            category : $('#demo-category').val()
+/*            category : $('#demo-category').val()*/
         };
 
         $.ajax({
@@ -78,13 +81,15 @@ var main = {
         $.ajax({
             type: 'POST',
             url: '/api/words/searchCategory',
-            dataType: 'String',
+            dataType: 'json',
             data: {
                 category :$('#word-category').val()
             }
-        }).done(function(){
+        }).done(function(result){
+            console.log(result);
         }).fail(function (error){
             alert(JSON.stringify(error));
+            console.log(JSON.stringify(error));
         });
     },
 };
