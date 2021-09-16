@@ -11,6 +11,9 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -27,11 +30,11 @@ public class PostsService {
     private final PostsRepository postsRepository;
 
     @Transactional
-    public List<PostsListResponseDto> findAllRand(){
-        List<PostsListResponseDto> wordList = postsRepository.findAllRand().stream()
+    public Page<PostsListResponseDto> findAllRand(Pageable pageable){
+        List<PostsListResponseDto> wordList = postsRepository.findAllRand(pageable).stream()
                 .map(PostsListResponseDto::new)
                 .collect(Collectors.toList());
-        return wordList;
+        return new PageImpl<>(wordList);
     }
 
 /*    @Transactional
