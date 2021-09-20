@@ -1556,6 +1556,18 @@ button,
     background-color: #f56a6a;
     box-shadow: none;
     color: #ffffff !important; }
+input[type="button"].google,
+button.google,
+.button.google {
+  background-color: #4285F4;
+  box-shadow: none;
+  color: #ffffff !important; }
+input[type="button"].naver,
+button.naver,
+.button.naver {
+  background-color: #1EC800;
+  box-shadow: none;
+  color: #ffffff !important; }
     input[type="submit"].primary:hover,
     input[type="reset"].primary:hover,
     input[type="button"].primary:hover,

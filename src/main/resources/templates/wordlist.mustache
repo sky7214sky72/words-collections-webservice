@@ -27,19 +27,25 @@
         {{/posts}}
         </tbody>
     </table>
+    {{#pageCount}}
+        {{#pageNumber}}
+            <h4>현재 페이지 번호 : {{pageNumber}}</h4>
+        {{/pageNumber}}
+        <div class="row gtr-uniform">
+            <div class="col-3 col-6-xsmall">
+                    <input type="text" name="demo-name" id="move-number" value="" placeholder="이동할 페이지 번호를 입력">
+            </div>
+            <div class="col-3 col-6-xsmall">
+                <input type="text" value="{{pageCount}}" readonly>
+            </div>
+            <div class="col-12">
+                <ul class="actions">
+                    <li><input type="submit" value="페이지 이동" id="move-page" class="primary"></li>
+                </ul>
+            </div>
+        </div>
+    {{/pageCount}}
     <br/>
-<!--    <ul class="pagination">
-        <li><span class="button disabled">Prev</span></li>
-        <li><a href="#" class="page active">1</a></li>
-        <li><a href="#" class="page">2</a></li>
-        <li><a href="#" class="page">3</a></li>
-        <li><span>&hellip;</span></li>
-        <li><a href="#" class="page">8</a></li>
-        <li><a href="#" class="page">9</a></li>
-        <li><a href="#" class="page">10</a></li>
-        <li><a href="#" class="button">Next</a></li>
-    </ul>
-    <br/>-->
     <ul class="actions">
         <li><input type="button" value="단어 가리기" id = "btn-word" class="primary" /></li>
         <li><input type="button" value="의미 가리기" id = "btn-mean" class="primary" /></li>

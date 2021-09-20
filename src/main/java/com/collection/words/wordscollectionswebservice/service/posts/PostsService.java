@@ -34,7 +34,12 @@ public class PostsService {
         List<PostsListResponseDto> wordList = postsRepository.findAllRand(pageable).stream()
                 .map(PostsListResponseDto::new)
                 .collect(Collectors.toList());
-        return new PageImpl<>(wordList);
+        return new PageImpl<>(wordList,pageable,postsRepository.findAllRand(pageable).getTotalPages());
+    }
+
+    @Transactional
+    public int pageCount(Pageable pageable){
+        return postsRepository.findAllRand(pageable).getTotalPages();
     }
 
 /*    @Transactional

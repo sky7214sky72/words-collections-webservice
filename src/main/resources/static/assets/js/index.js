@@ -8,7 +8,10 @@ var main = {
             _this.saveExcel();
         });
         $('#btn-back').on('click', function () {
-            window.location.href = '/api/words/list';
+            window.location.href = '/';
+        });
+        $('#move-page').on('click', function () {
+            window.location.href = '/?page='+$('#move-number').val();
         });
         $('#btn-word').on('click', function(){
             if(!$('p[name="word"]').is(':visible')){

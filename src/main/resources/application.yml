@@ -14,3 +14,8 @@ spring:
   devtools:
     restart:
       enabled: true
+    remote:
+      restart:
+        enabled: false
+  mustache:
+    cache: false

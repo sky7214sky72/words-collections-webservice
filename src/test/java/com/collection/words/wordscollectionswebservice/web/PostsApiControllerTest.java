@@ -2,6 +2,7 @@ package com.collection.words.wordscollectionswebservice.web;
 
 import com.collection.words.wordscollectionswebservice.domain.posts.Posts;
 import com.collection.words.wordscollectionswebservice.domain.posts.PostsRepository;
+import com.collection.words.wordscollectionswebservice.web.dto.PostsListResponseDto;
 import com.collection.words.wordscollectionswebservice.web.dto.PostsSaveRequestDto;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -10,11 +11,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -54,4 +60,5 @@ public class PostsApiControllerTest {
         assertThat(all.get(0).getWord()).isEqualTo(word);
         assertThat(all.get(0).getMeaning()).isEqualTo(meaning);
     }
+
 }
