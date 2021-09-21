@@ -1,21 +1,15 @@
 {{>layout/header}}
 <br/>
-<!--<div class="col-12">
-    <select name="demo-category" id="word-category">
-        <option value="">- 파트선택 -</option>
-        #posts}}
-        <option value="category}}">category}}</option>
-        /posts}}
-    </select>
-</div>-->
-<h4>단어 목록</h4>
-<br/>
+<h4>단어 목록</h4><p>출처: <a href="https://wayquest.tistory.com/entry/TOEIC-%ED%95%B4%EC%BB%A4%EC%8A%A4-%ED%86%A0%EC%9D%B5%EB%B3%B4%EC%B9%B4-%EC%99%B8%EC%9A%B0%EA%B8%B0-Excel-%EC%82%B0%ED%83%80%ED%86%A0%EC%9D%B5-%EB%AC%B8%EB%B2%95-%EC%A0%95%EB%A6%AC">https://wayquest.tistory.com/</a></p>
 <div class="table-wrapper">
     <table class="alt">
         <thead>
         <tr>
             <th>단어</th>
             <th>의미</th>
+            {{#guestName}}
+                <th>암기완료</th>
+            {{/guestName}}
         </tr>
         </thead>
         <tbody id="toeicList">
@@ -23,6 +17,9 @@
         <tr>
             <td><p name="word">{{word}}</p></td>
             <td><p name="meaning">{{meaning}}</p></td>
+            {{#guestName}}
+                <td><input type="button" value="암기 완료!" id = "{{word}}" class="primary check-word" /></td>
+            {{/guestName}}
         </tr>
         {{/posts}}
         </tbody>
@@ -50,21 +47,23 @@
         <li><input type="button" value="단어 가리기" id = "btn-word" class="primary" /></li>
         <li><input type="button" value="의미 가리기" id = "btn-mean" class="primary" /></li>
     </ul>
-    <ul class="actions">
-        <li><a href="/api/words/save" class="button primary">단어 업로드</a></li>
-    </ul>
-    <ul class="actions">
-        <li>
-            <input type="file" accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" id="file" required/>
-        </li>
-        <li>
-            <input type="button" value="엑셀 업로드" id = "btn-excel" class="button icon solid fa-download" />
-        </li>
-        <li>
-            <form action="/api/words/excelDown" method="post">
-                <input type="submit" value="양식 다운로드" id = "btn-xlsdown" class="button icon solid fa-download" />
-            </form>
-        </li>
-    </ul>
+    {{#adminName}}
+        <ul class="actions">
+            <li><a href="/api/words/save" class="button primary">단어 업로드</a></li>
+        </ul>
+        <ul class="actions">
+            <li>
+                <input type="file" accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" id="file" required/>
+            </li>
+            <li>
+                <input type="button" value="엑셀 업로드" id = "btn-excel" class="button icon solid fa-download" />
+            </li>
+            <li>
+                <form action="/api/words/excelDown" method="post">
+                    <input type="submit" value="양식 다운로드" id = "btn-xlsdown" class="button icon solid fa-download" />
+                </form>
+            </li>
+        </ul>
+    {{/adminName}}
 </div>
 {{>layout/sidebar}}

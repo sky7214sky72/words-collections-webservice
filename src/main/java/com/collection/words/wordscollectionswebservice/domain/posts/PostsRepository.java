@@ -10,6 +10,4 @@ import java.util.List;
 public interface PostsRepository extends JpaRepository<Posts, Long> {
     @Query(value = "SELECT p.* FROM Posts p", nativeQuery = true)
     Page<Posts> findAllRand(Pageable pageable);
-//ORDER BY RANDOM()
-/*    List<Posts> findByCategory(String category);*/
 }

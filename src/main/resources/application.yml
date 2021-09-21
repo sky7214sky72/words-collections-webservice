@@ -19,3 +19,7 @@ spring:
         enabled: false
   mustache:
     cache: false
+  profiles:
+    include: oauth
+  session:
+    store-type: jdbc

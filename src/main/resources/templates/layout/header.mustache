@@ -22,8 +22,28 @@
             <!-- Header -->
             <header id="header">
                 <a href="/" class="logo"><strong>토익</strong> 단어장!</a>
-                <ul class="icons">
-                    <li><input type="button" value="구글 로그인" id = "btn-google" class="google" /></li>
-                    <li><input type="button" value="네이버 로그인" id = "btn-naver" class="naver" /></li>
-                </ul>
+                {{#guestName}}
+                    <input type="hidden" id="hidden-email" value="{{guestName}}"/>
+                    <input type="hidden" id="hidden-name" value="{{guName}}"/>
+                    <ul class="icons">
+                        <li><h3>ID:<strong>{{guestName}}</strong></h3></li>
+                        <li><input type="button" value="Logout" id = "btn-logout" class="primary" /></li>
+                    </ul>
+                {{/guestName}}
+                {{^guestName}}
+                    {{#adminName}}
+                        <input type="hidden" id="hidden-email" value="{{adminName}}"/>
+                        <input type="hidden" id="hidden-name" value="{{adName}}"/>
+                        <ul class="icons">
+                            <li><h3>ID:<strong>{{adminName}}</strong></h3></li>
+                            <li><input type="button" value="Logout" id = "btn-logout" class="primary" /></li>
+                        </ul>
+                    {{/adminName}}
+                    {{^adminName}}
+                        <ul class="icons">
+                            <li><input type="button" value="구글 로그인" id = "btn-google" class="google" /></li>
+                            <li><input type="button" value="네이버 로그인" id = "btn-naver" class="naver" /></li>
+                        </ul>
+                    {{/adminName}}
+                {{/guestName}}
             </header>

@@ -10,19 +10,16 @@ import lombok.NoArgsConstructor;
 public class PostsSaveRequestDto {
     private String word;
     private String meaning;
-/*    private String category;*/
     @Builder
-    public PostsSaveRequestDto(String word, String meaning/*, String category*/){
+    public PostsSaveRequestDto(String word, String meaning){
         this.word = word;
         this.meaning = meaning;
-/*        this.category = category;*/
     }
 
     public Posts toEntity(){
         return Posts.builder()
                 .word(word)
                 .meaning(meaning)
-/*                .category(category)*/
                 .build();
     }
 }

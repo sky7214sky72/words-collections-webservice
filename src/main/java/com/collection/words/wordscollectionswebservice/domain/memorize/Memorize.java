@@ -1,4 +1,4 @@
-package com.collection.words.wordscollectionswebservice.domain.posts;
+package com.collection.words.wordscollectionswebservice.domain.memorize;
 
 import com.collection.words.wordscollectionswebservice.domain.BaseTimeEntity;
 import lombok.Builder;
@@ -10,8 +10,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Posts extends BaseTimeEntity {
-
+public class Memorize extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,12 +18,16 @@ public class Posts extends BaseTimeEntity {
     @Column(length = 500, nullable = false)
     private String word;
 
-    @Column(columnDefinition = "TEXT", nullable = false)
-    private String meaning;
+    @Column(nullable = false)
+    private String email;
+
+    @Column(nullable = false)
+    private String name;
 
     @Builder
-    public Posts(String word, String meaning){
+    public Memorize(String word, String email,String name){
         this.word = word;
-        this.meaning = meaning;
+        this.email = email;
+        this.name = name;
     }
 }

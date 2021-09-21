@@ -48,8 +48,6 @@ public class PostsApiController {
         cell.setCellValue("단어");
         cell = row.createCell(1);
         cell.setCellValue("의미");
-/*        cell = row.createCell(2);
-        cell.setCellValue("카테고리");*/
 
         // Body
         for (int i=0; i<3; i++) {
@@ -58,8 +56,6 @@ public class PostsApiController {
             cell.setCellValue("영단어입력");
             cell = row.createCell(1);
             cell.setCellValue("의미입력");
-/*            cell = row.createCell(2);
-            cell.setCellValue("카테고리입력");*/
         }
 
         // 컨텐츠 타입과 파일명 지정

@@ -12,8 +12,8 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@ExtendWith(SpringExtension.class)
 @SpringBootTest
+@ExtendWith(SpringExtension.class)
 public class PostsRepositoryTest {
 
     @Autowired
@@ -29,7 +29,7 @@ public class PostsRepositoryTest {
     public void 단어_불러오기(){
         String word = "Test";
         String meaning = "시험";
-        postsRepository.save(Posts.builder().word(word).meaning(meaning).category("part 1").build());
+        //postsRepository.save(Posts.builder().word(word).meaning(meaning).category("part 1").build());
 
         List<Posts> postsList = postsRepository.findAll();
 
@@ -44,7 +44,6 @@ public class PostsRepositoryTest {
         postsRepository.save(Posts.builder()
                 .word("Test")
                 .meaning("시험")
-                .category("part1")
                 .build());
         List<Posts> postsList = postsRepository.findAll();
 

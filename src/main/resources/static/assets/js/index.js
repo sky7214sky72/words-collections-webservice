@@ -10,6 +10,15 @@ var main = {
         $('#btn-back').on('click', function () {
             window.location.href = '/';
         });
+        $('#btn-logout').on('click', function () {
+            window.location.href = '/logout';
+        });
+        $('#btn-google').on('click', function () {
+            window.location.href = '/oauth2/authorization/google';
+        });
+        $('#btn-naver').on('click', function () {
+            window.location.href = '/oauth2/authorization/naver';
+        });
         $('#move-page').on('click', function () {
             window.location.href = '/?page='+$('#move-number').val();
         });
@@ -31,15 +40,17 @@ var main = {
                 $('#btn-mean').val("의미 보이기")
             }
         });
-        $('#word-category').on('change',function(){
-            _this.search();
+        $('.check-word').on('click',(e)=>{
+            _this.memorize(e.target.id);
         });
+        if(typeof $('#hidden-email').val() != "undefined" || $('#hidden-email').val() != null){
+            _this.memorizeRead();
+        }
     },
     save: function (){
         var data = {
             word : $('#demo-word').val(),
             meaning : $('#demo-meaning').val(),
-/*            category : $('#demo-category').val()*/
         };
 
         $.ajax({
@@ -80,19 +91,41 @@ var main = {
             alert(JSON.stringify(error));
         });
     },
-    search: function (){
+    memorize: function(memorize_value){
+        var data = {
+            word : memorize_value,
+            email : $('#hidden-email').val(),
+            name : $('#hidden-name').val()
+        };
         $.ajax({
             type: 'POST',
-            url: '/api/words/searchCategory',
+            url: '/api/memorize/save',
             dataType: 'json',
-            data: {
-                category :$('#word-category').val()
-            }
-        }).done(function(result){
-            console.log(result);
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(data)
+        }).done(function(){
+            alert('암기가 완료됐습니다.');
+            window.location.reload();
         }).fail(function (error){
             alert(JSON.stringify(error));
-            console.log(JSON.stringify(error));
+        });
+    },
+    memorizeRead: function(){
+        var data = $('#hidden-email').val();
+        $.ajax({
+            type: 'POST',
+            url: '/api/memorize/read',
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            data: data
+        }).done(function(result){
+            for(var i=0;i<result.length;i++){
+                memo = result[i].word;
+                document.getElementById(memo).value = '암기성공';
+                document.getElementById(memo).disabled = true;
+            }
+        }).fail(function (error){
+            alert(JSON.stringify(error));
         });
     },
 };

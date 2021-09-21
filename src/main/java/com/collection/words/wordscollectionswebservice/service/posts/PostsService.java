@@ -30,24 +30,18 @@ public class PostsService {
     private final PostsRepository postsRepository;
 
     @Transactional
-    public Page<PostsListResponseDto> findAllRand(Pageable pageable){
-        List<PostsListResponseDto> wordList = postsRepository.findAllRand(pageable).stream()
+    public Page<PostsListResponseDto> findAll(Pageable pageable){
+        List<PostsListResponseDto> wordList = postsRepository.findAll(pageable).stream()
                 .map(PostsListResponseDto::new)
                 .collect(Collectors.toList());
-        return new PageImpl<>(wordList,pageable,postsRepository.findAllRand(pageable).getTotalPages());
+        return new PageImpl<>(wordList,pageable,postsRepository.findAll(pageable).getTotalPages());
     }
 
     @Transactional
     public int pageCount(Pageable pageable){
-        return postsRepository.findAllRand(pageable).getTotalPages();
+        return postsRepository.findAll(pageable).getTotalPages();
     }
 
-/*    @Transactional
-    public List<PostsListResponseDto> findByCategory(String category){
-        return postsRepository.findByCategory(category).stream()
-                .map(PostsListResponseDto::new)
-                .collect(Collectors.toList());
-    }*/
     @Transactional
     public Long save(PostsSaveRequestDto requestDto){
         return postsRepository.save(requestDto.toEntity()).getId();
@@ -74,7 +68,6 @@ public class PostsService {
             PostsSaveRequestDto requestDto = PostsSaveRequestDto.builder()
                     .word(row.getCell(0).getStringCellValue())
                     .meaning(row.getCell(1).getStringCellValue())
-/*                    .category(row.getCell(2).getStringCellValue())*/
                     .build();
             save(requestDto);
         }
