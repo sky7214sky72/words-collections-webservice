@@ -18,7 +18,14 @@
             </header>
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="/">학습현황</a></li>
+                {{#guestName}}
+                    <li><a href="/">학습현황</a></li>
+                {{/guestName}}
+                {{^guestName}}
+                    {{#adminName}}
+                        <li><a href="/">학습현황</a></li>
+                    {{/adminName}}
+                {{/guestName}}
 <!--                <li>
                     <span class="opener">토이 프로젝트</span>
                     <ul>
@@ -28,7 +35,10 @@
                 </li>-->
             </ul>
         </nav>
-
+        <ul class="actions">
+            <li><input type="button" value="단어 가리기" id = "btn-word" class="primary" /></li>
+            <li><input type="button" value="의미 가리기" id = "btn-mean" class="primary" /></li>
+        </ul>
         <!-- Section -->
         <section>
             <header class="major">
@@ -37,7 +47,7 @@
             <p>메일과 깃허브 주소입니다.</p>
             <ul class="contact">
                 <li class="icon solid fa-envelope"><a href="cws070993@gmail.com">cws070993@gmail.com</a></li>
-                <li class="icon brands fa-github"><a href="https://github.com/sky7214sky72?tab=repositories">https://github.com/sky7214sky72?tab=repositories</li>
+                <li class="icon brands fa-github"><a href="https://github.com/sky7214sky72">https://github.com/sky7214sky72</li>
             </ul>
         </section>
 

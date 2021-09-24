@@ -25,6 +25,8 @@
         </tbody>
     </table>
     {{#pageCount}}
+        <input type="hidden" id = "pageNumber"/>
+        <input type="hidden" id = "pageCount"/>
         {{#pageNumber}}
             <h4>현재 페이지 번호 : {{pageNumber}}</h4>
         {{/pageNumber}}
@@ -43,10 +45,10 @@
         </div>
     {{/pageCount}}
     <br/>
-    <ul class="actions">
+<!--    <ul class="actions">
         <li><input type="button" value="단어 가리기" id = "btn-word" class="primary" /></li>
         <li><input type="button" value="의미 가리기" id = "btn-mean" class="primary" /></li>
-    </ul>
+    </ul>-->
     {{#adminName}}
         <ul class="actions">
             <li><a href="/api/words/save" class="button primary">단어 업로드</a></li>

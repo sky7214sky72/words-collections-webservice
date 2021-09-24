@@ -34,7 +34,7 @@ public class PostsService {
         List<PostsListResponseDto> wordList = postsRepository.findAll(pageable).stream()
                 .map(PostsListResponseDto::new)
                 .collect(Collectors.toList());
-        return new PageImpl<>(wordList,pageable,postsRepository.findAll(pageable).getTotalPages());
+        return new PageImpl<>(wordList,pageable,postsRepository.findAll(pageable).getTotalElements());
     }
 
     @Transactional

@@ -6,7 +6,6 @@ import com.collection.words.wordscollectionswebservice.web.dto.MemorizeSaveReque
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -22,7 +21,7 @@ public class MemorizeApiController {
     }
 
     @PostMapping("/api/memorize/read")
-    public List<MemorizeListResponseDto> read(@RequestParam String email){
+    public List<MemorizeListResponseDto> read(@RequestBody String email){
         return memorizeService.findByEmail(email);
     }
 }
