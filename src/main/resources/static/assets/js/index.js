@@ -46,6 +46,7 @@ var main = {
         if(typeof $('#hidden-email').val() != "undefined" || $('#hidden-email').val() != null){
             _this.memorizeRead();
         }
+        _this.renderPagination();
     },
     save: function (){
         var data = {
@@ -127,6 +128,37 @@ var main = {
         }).fail(function (error){
             alert(JSON.stringify(error));
         });
+    },
+    renderPagination: function(){
+        if($('#totalCount').val() <= 20) return;
+        var currentPage = $('#pageNumber').val();
+        var totalPage = $('#pageCount').val();
+        var pageGroup = Math.ceil(currentPage / 10);
+        var last = pageGroup * 10;
+        if(last > totalPage) last = totalPage;
+
+        var first = last - (10 - 1) <= 0 ? 1 : last - (10 - 1);
+        var next = last + 1;
+        var prev = first - 1;
+        const fragmentPage = document.createDocumentFragment();
+        if(prev > 0){
+            var preli = document.createElement('li');
+            preli.insertAdjacentHTML("beforeend",`<a href='/?page=${prev}' class='button'>Prev</a>`);
+            fragmentPage.appendChild(preli);
+        }
+        for(var i = first;i<=last;i++){
+            const li = document.createElement("li");
+            li.insertAdjacentHTML("beforeend",`<a href='/?page=${i}' id='${i}' class='page'>${i}</a>`);
+            fragmentPage.appendChild(li);
+        }
+        if(last<totalPage){
+            var endli = document.createElement('li');
+            endli.insertAdjacentHTML("beforeend",`<a href='/?page=${next}' class='button'>Next</a>`);
+            fragmentPage.appendChild(endli);
+        }
+        document.getElementById('js-pagination').appendChild(fragmentPage);
+        $('#js-pagination a').removeClass("active");
+        $(`#js-pagination a#${currentPage}`).addClass("active");
     },
 };
 

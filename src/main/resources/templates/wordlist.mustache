@@ -25,30 +25,14 @@
         </tbody>
     </table>
     {{#pageCount}}
-        <input type="hidden" id = "pageNumber"/>
-        <input type="hidden" id = "pageCount"/>
+        <input type="hidden" id = "pageCount" value="{{pageCount}}"/>
         {{#pageNumber}}
-            <h4>현재 페이지 번호 : {{pageNumber}}</h4>
+            <input type="hidden" id = "pageNumber" value="{{pageNumber}}">
+            <input type="hidden" id = "totalCount" value="{{totalCount}}">
         {{/pageNumber}}
-        <div class="row gtr-uniform">
-            <div class="col-3 col-6-xsmall">
-                    <input type="text" name="demo-name" id="move-number" value="" placeholder="이동할 페이지 번호를 입력">
-            </div>
-            <div class="col-3 col-6-xsmall">
-                <input type="text" value="{{pageCount}}" readonly>
-            </div>
-            <div class="col-12">
-                <ul class="actions">
-                    <li><input type="submit" value="페이지 이동" id="move-page" class="primary"></li>
-                </ul>
-            </div>
-        </div>
     {{/pageCount}}
-    <br/>
-<!--    <ul class="actions">
-        <li><input type="button" value="단어 가리기" id = "btn-word" class="primary" /></li>
-        <li><input type="button" value="의미 가리기" id = "btn-mean" class="primary" /></li>
-    </ul>-->
+    <ul class="pagination" id="js-pagination">
+    </ul>
     {{#adminName}}
         <ul class="actions">
             <li><a href="/api/words/save" class="button primary">단어 업로드</a></li>

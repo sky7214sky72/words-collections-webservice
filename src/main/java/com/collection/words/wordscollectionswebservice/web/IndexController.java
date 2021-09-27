@@ -24,6 +24,7 @@ public class IndexController {
     public String wordList(Model model,@LoginUser SessionUser user, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable){
         int pageCount = postsService.pageCount(pageable);
         int pageNumber = postsService.findAll(pageable).getNumber() + 1;
+        Long totalCount = postsService.findAll(pageable).getTotalElements();
         if (user != null){
             if(user.getRole().equals("ROLE_ADMIN")){
                 model.addAttribute("adminName",user.getEmail());
@@ -36,6 +37,7 @@ public class IndexController {
         model.addAttribute("posts",postsService.findAll(pageable));
         model.addAttribute("pageCount",pageCount);
         model.addAttribute("pageNumber",pageNumber);
+        model.addAttribute("totalCount",totalCount);
         return "wordlist";
     }
 
