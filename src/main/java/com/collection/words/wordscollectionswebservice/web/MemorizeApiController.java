@@ -4,9 +4,7 @@ import com.collection.words.wordscollectionswebservice.service.memorize.Memorize
 import com.collection.words.wordscollectionswebservice.web.dto.MemorizeListResponseDto;
 import com.collection.words.wordscollectionswebservice.web.dto.MemorizeSaveRequestDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,5 +21,11 @@ public class MemorizeApiController {
     @PostMapping("/api/memorize/read")
     public List<MemorizeListResponseDto> read(@RequestBody String email){
         return memorizeService.findByEmail(email);
+    }
+
+    @DeleteMapping("/api/memorize/{email}/{word}")
+    public String delete(@PathVariable String email,@PathVariable String word){
+        memorizeService.delete(email,word);
+        return email;
     }
 }

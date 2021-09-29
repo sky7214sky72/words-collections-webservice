@@ -8,4 +8,5 @@ import java.util.Optional;
 
 public interface MemorizeRepository extends JpaRepository<Memorize, Long> {
     List<Memorize> findByEmail(String email);
+    Memorize findByEmailAndWord(String email,String word);
 }

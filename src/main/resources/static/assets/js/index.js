@@ -41,7 +41,11 @@ var main = {
             }
         });
         $('.check-word').on('click',(e)=>{
-            _this.memorize(e.target.id);
+             if(document.getElementById(e.target.id).value == 'V'){
+                 _this.memorize(e.target.id);
+             }else{
+                 _this.memorizeDelete(e.target.id);
+             }
         });
         if(typeof $('#hidden-email').val() != "undefined" || $('#hidden-email').val() != null){
             _this.memorizeRead();
@@ -105,7 +109,8 @@ var main = {
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(data)
         }).done(function(){
-            alert('암기가 완료됐습니다.');
+            alert('암기성공!');
+            document.getElementById(memorize_value).value = 'V';
             window.location.reload();
         }).fail(function (error){
             alert(JSON.stringify(error));
@@ -122,9 +127,23 @@ var main = {
         }).done(function(result){
             for(var i=0;i<result.length;i++){
                 memo = result[i].word;
-                document.getElementById(memo).value = '암기성공';
-                document.getElementById(memo).disabled = true;
+                document.getElementById(memo).value = 'X';
             }
+        }).fail(function (error){
+            alert(JSON.stringify(error));
+        });
+    },
+    memorizeDelete: function(memorize_value){
+        var email = $('#hidden-email').val();
+        var word = memorize_value;
+        $.ajax({
+            type: 'DELETE',
+            url: '/api/memorize/'+email+'/'+word,
+            contentType: 'application/json; charset=utf-8',
+        }).done(function(){
+            alert('암기취소');
+            document.getElementById(memorize_value).value = 'V';
+            window.location.reload();
         }).fail(function (error){
             alert(JSON.stringify(error));
         });

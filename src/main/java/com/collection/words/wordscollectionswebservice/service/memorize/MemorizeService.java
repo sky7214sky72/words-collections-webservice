@@ -25,4 +25,11 @@ public class MemorizeService {
     public List<MemorizeListResponseDto> findByEmail(String email){
         return memorizeRepository.findByEmail(email).stream().map(MemorizeListResponseDto::new).collect(Collectors.toList());
     }
+
+    @Transactional
+    public void delete (String email, String word){
+        Memorize memorize = memorizeRepository.findByEmailAndWord(email,word);
+
+        memorizeRepository.delete(memorize);
+    }
 }

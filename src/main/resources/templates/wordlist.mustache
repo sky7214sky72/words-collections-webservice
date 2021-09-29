@@ -8,7 +8,7 @@
             <th>단어</th>
             <th>의미</th>
             {{#guestName}}
-                <th>암기완료</th>
+                <th>암기여부</th>
             {{/guestName}}
         </tr>
         </thead>
@@ -18,7 +18,7 @@
             <td><p name="word">{{word}}</p></td>
             <td><p name="meaning">{{meaning}}</p></td>
             {{#guestName}}
-                <td><input type="button" value="암기 완료!" id = "{{word}}" class="primary check-word" /></td>
+                <td><input type="button" value="V" id = "{{word}}" class="primary check-word" /></td>
             {{/guestName}}
         </tr>
         {{/posts}}
