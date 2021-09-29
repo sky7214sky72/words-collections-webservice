@@ -1,15 +1,15 @@
 package com.collection.words.wordscollectionswebservice.web.dto;
 
-import com.collection.words.wordscollectionswebservice.domain.memorize.Memorize;
+import com.collection.words.wordscollectionswebservice.domain.memorization.Memorization;
 import lombok.Getter;
 
 @Getter
-public class MemorizeListResponseDto {
+public class MemorizationListResponseDto {
     private String word;
     private String email;
     private String name;
 
-    public MemorizeListResponseDto(Memorize entity){
+    public MemorizationListResponseDto(Memorization entity){
         this.word = entity.getWord();
         this.email = entity.getEmail();
         this.name = entity.getName();

@@ -1,4 +1,4 @@
-package com.collection.words.wordscollectionswebservice.domain.memorize;
+package com.collection.words.wordscollectionswebservice.domain.memorization;
 
 import com.collection.words.wordscollectionswebservice.domain.BaseTimeEntity;
 import lombok.Builder;
@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Memorize extends BaseTimeEntity {
+public class Memorization extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,7 +25,7 @@ public class Memorize extends BaseTimeEntity {
     private String name;
 
     @Builder
-    public Memorize(String word, String email,String name){
+    public Memorization(String word, String email, String name){
         this.word = word;
         this.email = email;
         this.name = name;
