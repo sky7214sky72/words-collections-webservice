@@ -29,7 +29,7 @@ public class PostsRepositoryTest {
     public void 단어_불러오기(){
         String word = "Test";
         String meaning = "시험";
-        //postsRepository.save(Posts.builder().word(word).meaning(meaning).category("part 1").build());
+        postsRepository.save(Posts.builder().word(word).meaning(meaning).build());
 
         List<Posts> postsList = postsRepository.findAll();
 

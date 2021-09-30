@@ -19,6 +19,6 @@ public class IndexControllerTest {
     public void 메인페이지_로딩(){
         String body = this.restTemplate.getForObject("/",String.class);
 
-        assertThat(body).contains("Hi");
+        assertThat(body).contains("토익");
     }
 }
