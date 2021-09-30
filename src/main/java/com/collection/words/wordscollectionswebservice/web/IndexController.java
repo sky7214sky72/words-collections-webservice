@@ -2,6 +2,7 @@ package com.collection.words.wordscollectionswebservice.web;
 
 import com.collection.words.wordscollectionswebservice.config.auth.LoginUser;
 import com.collection.words.wordscollectionswebservice.config.auth.dto.SessionUser;
+import com.collection.words.wordscollectionswebservice.service.memorization.MemorizationService;
 import com.collection.words.wordscollectionswebservice.service.posts.PostsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class IndexController {
 
     private final PostsService postsService;
-
+    private final MemorizationService memorizationService;
 
     @GetMapping("/")
     public String wordList(Model model,@LoginUser SessionUser user, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable){
@@ -49,6 +50,19 @@ public class IndexController {
     @GetMapping("/api/chat/list")
     public String chatPage(){
         return "chatpage";
+    }
+
+    @GetMapping("/api/my/progress")
+    public String wordProgress(Model model,@LoginUser SessionUser user, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable){
+        if (user != null){
+            model.addAttribute("guestName",user.getEmail());
+            model.addAttribute("guName",user.getName());
+        }
+        Long totalCount = postsService.findAll(pageable).getTotalElements();
+        Long memoCount = memorizationService.memoCount(user.getEmail());
+        model.addAttribute("totalCount",totalCount);
+        model.addAttribute("memoCount",memoCount);
+        return "progresspage";
     }
 
 }

@@ -32,4 +32,9 @@ public class MemorizationService {
 
         memorizationRepository.delete(memorization);
     }
+
+    @Transactional
+    public long memoCount(String email){
+        return memorizationRepository.findByEmail(email).stream().count();
+    }
 }

@@ -110,8 +110,8 @@ var main = {
             data: JSON.stringify(data)
         }).done(function(){
             alert('암기성공!');
-            document.getElementById(memorize_value).value = 'V';
-            window.location.reload();
+            document.getElementById(memorize_value).value = 'X';
+            this.memorizeRead();
         }).fail(function (error){
             alert(JSON.stringify(error));
         });
@@ -127,7 +127,9 @@ var main = {
         }).done(function(result){
             for(var i=0;i<result.length;i++){
                 memo = result[i].word;
-                document.getElementById(memo).value = 'X';
+                if(document.getElementById(memo) != null){
+                    document.getElementById(memo).value = 'X';
+                }
             }
         }).fail(function (error){
             alert(JSON.stringify(error));
@@ -143,7 +145,7 @@ var main = {
         }).done(function(){
             alert('암기취소');
             document.getElementById(memorize_value).value = 'V';
-            window.location.reload();
+            this.memorizeRead();
         }).fail(function (error){
             alert(JSON.stringify(error));
         });

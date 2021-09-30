@@ -1,0 +1,32 @@
+{{>layout/header}}
+<!-- Section -->
+<section>
+    <header class="major">
+        <h2>학습현황</h2>
+    </header>
+    <input type="hidden" id="total-count" value="{{totalCount}}"/>
+    <input type="hidden" id="memo-count" value="{{memoCount}}"/>
+    <div class="features">
+        <article>
+            <div class="content">
+                <canvas id="pie-chart"></canvas>
+            </div>
+        </article>
+    </div>
+</section>
+<!-- Section -->
+<section>
+    <header class="major">
+        <h2>학습일지</h2>
+    </header>
+    <div class="features">
+        <article>
+            <span class="icon fa-gem"></span>
+            <div class="content">
+                <h3>Portitor ullamcorper</h3>
+                <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+            </div>
+        </article>
+    </div>
+</section>
+{{>layout/sidebar}}

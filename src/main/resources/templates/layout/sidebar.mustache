@@ -19,11 +19,11 @@
             <ul>
                 <li><a href="/">Home</a></li>
                 {{#guestName}}
-                    <li><a href="/">학습현황</a></li>
+                    <li><a href="/api/my/progress">학습현황</a></li>
                 {{/guestName}}
                 {{^guestName}}
                     {{#adminName}}
-                        <li><a href="/">학습현황</a></li>
+                        <li><a href="/api/my/progress">학습현황</a></li>
                     {{/adminName}}
                 {{/guestName}}
 <!--                <li>
@@ -69,5 +69,7 @@
 <script src="/assets/js/main.js"></script>
 <script src="/assets/js/index.js"></script>
 <script src="/assets/js/chat.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script src="/assets/js/wordprogress.js"></script>
 </body>
 </html>

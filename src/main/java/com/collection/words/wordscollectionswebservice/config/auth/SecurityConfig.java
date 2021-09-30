@@ -19,6 +19,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .authorizeRequests()
                     .antMatchers("/","/static/assert/**","/static/images/**","/h2-console/**").permitAll()
                     .antMatchers("/api/words/**").hasRole(Role.ADMIN.name())
+                    .antMatchers("/api/my/**").hasRole(Role.GUEST.name())
                 .and()
                     .logout()
                         .logoutSuccessUrl("/")
