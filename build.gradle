@@ -30,7 +30,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
     implementation 'com.h2database:h2'
     implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '3.0.0'
-    implementation 'org.mariadb.jdbc:mariadb-java-client'
+    implementation 'org.mariadb.jdbc:mariadb-java-client:2.7.3'
     compileOnly 'org.projectlombok:lombok'
     implementation group: 'org.apache.poi', name: 'poi', version: '3.11'
     implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '3.11'
