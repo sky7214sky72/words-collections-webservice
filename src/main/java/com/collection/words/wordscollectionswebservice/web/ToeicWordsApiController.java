@@ -1,14 +1,13 @@
 package com.collection.words.wordscollectionswebservice.web;
 
-import com.collection.words.wordscollectionswebservice.service.posts.PostsService;
-import com.collection.words.wordscollectionswebservice.web.dto.PostsSaveRequestDto;
+import com.collection.words.wordscollectionswebservice.service.toeic.ToeicWordsService;
+import com.collection.words.wordscollectionswebservice.web.dto.ToeicWordsSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,17 +19,17 @@ import java.io.IOException;
 
 @RequiredArgsConstructor
 @RestController
-public class PostsApiController {
-    private final PostsService postsService;
+public class ToeicWordsApiController {
+    private final ToeicWordsService toeicWordsService;
 
     @PostMapping("/api/words/posts")
-    public Long save(@RequestBody PostsSaveRequestDto requestDto){
-        return postsService.save(requestDto);
+    public Long save(@RequestBody ToeicWordsSaveRequestDto requestDto){
+        return toeicWordsService.save(requestDto);
     }
 
     @PostMapping("/api/words/postsExcel")
     public void excelsave(@RequestParam("file") MultipartFile file) throws IOException {
-        postsService.excelSave(file);
+        toeicWordsService.excelSave(file);
     }
 
     @PostMapping("/api/words/excelDown")

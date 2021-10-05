@@ -97,17 +97,13 @@ var main = {
         });
     },
     memorize: function(memorize_value){
-        var data = {
-            word : memorize_value,
-            email : $('#hidden-email').val(),
-            name : $('#hidden-name').val()
-        };
+        var data = memorize_value;
         $.ajax({
             type: 'POST',
             url: '/api/memorize/save',
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
-            data: JSON.stringify(data)
+            data: data
         }).done(function(){
             alert('암기성공!');
             document.getElementById(memorize_value).value = 'X';
@@ -126,7 +122,8 @@ var main = {
             data: data
         }).done(function(result){
             for(var i=0;i<result.length;i++){
-                memo = result[i].word;
+                memo = result[i].word_id;
+                console.log(memo);
                 if(document.getElementById(memo) != null){
                     document.getElementById(memo).value = 'X';
                 }
@@ -136,11 +133,10 @@ var main = {
         });
     },
     memorizeDelete: function(memorize_value){
-        var email = $('#hidden-email').val();
         var word = memorize_value;
         $.ajax({
             type: 'DELETE',
-            url: '/api/memorize/'+email+'/'+word,
+            url: '/api/memorize/'+word,
             contentType: 'application/json; charset=utf-8',
         }).done(function(){
             alert('암기취소');

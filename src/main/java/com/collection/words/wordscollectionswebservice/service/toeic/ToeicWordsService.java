@@ -1,12 +1,11 @@
-package com.collection.words.wordscollectionswebservice.service.posts;
+package com.collection.words.wordscollectionswebservice.service.toeic;
 
-import com.collection.words.wordscollectionswebservice.domain.posts.PostsRepository;
-import com.collection.words.wordscollectionswebservice.web.dto.PostsListResponseDto;
-import com.collection.words.wordscollectionswebservice.web.dto.PostsSaveRequestDto;
+import com.collection.words.wordscollectionswebservice.domain.toeic.ToeicWordsRepository;
+import com.collection.words.wordscollectionswebservice.web.dto.ToeicWordsListResponseDto;
+import com.collection.words.wordscollectionswebservice.web.dto.ToeicWordsSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -18,33 +17,31 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
-public class PostsService {
-    private final PostsRepository postsRepository;
+public class ToeicWordsService {
+    private final ToeicWordsRepository toeicWordsRepository;
 
     @Transactional
-    public Page<PostsListResponseDto> findAll(Pageable pageable){
-        List<PostsListResponseDto> wordList = postsRepository.findAll(pageable).stream()
-                .map(PostsListResponseDto::new)
+    public Page<ToeicWordsListResponseDto> findAll(Pageable pageable){
+        List<ToeicWordsListResponseDto> wordList = toeicWordsRepository.findAll(pageable).stream()
+                .map(ToeicWordsListResponseDto::new)
                 .collect(Collectors.toList());
-        return new PageImpl<>(wordList,pageable,postsRepository.findAll(pageable).getTotalElements());
+        return new PageImpl<>(wordList,pageable, toeicWordsRepository.findAll(pageable).getTotalElements());
     }
 
     @Transactional
     public int pageCount(Pageable pageable){
-        return postsRepository.findAll(pageable).getTotalPages();
+        return toeicWordsRepository.findAll(pageable).getTotalPages();
     }
 
     @Transactional
-    public Long save(PostsSaveRequestDto requestDto){
-        return postsRepository.save(requestDto.toEntity()).getId();
+    public Long save(ToeicWordsSaveRequestDto requestDto){
+        return toeicWordsRepository.save(requestDto.toEntity()).getId();
     }
 
     @Transactional
@@ -65,7 +62,7 @@ public class PostsService {
         Sheet worksheet = workbook.getSheetAt(0);
         for(int i=1; i< worksheet.getPhysicalNumberOfRows();i++){
             Row row = worksheet.getRow(i);
-            PostsSaveRequestDto requestDto = PostsSaveRequestDto.builder()
+            ToeicWordsSaveRequestDto requestDto = ToeicWordsSaveRequestDto.builder()
                     .word(row.getCell(0).getStringCellValue())
                     .meaning(row.getCell(1).getStringCellValue())
                     .build();

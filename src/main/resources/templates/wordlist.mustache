@@ -13,15 +13,15 @@
         </tr>
         </thead>
         <tbody id="toeicList">
-        {{#posts}}
+        {{#toeicWords}}
         <tr>
             <td><p name="word">{{word}}</p></td>
             <td><p name="meaning">{{meaning}}</p></td>
             {{#guestName}}
-                <td><input type="button" value="V" id = "{{word}}" class="primary check-word" /></td>
+                <td><input type="button" value="V" id = "{{id}}" class="primary check-word" /></td>
             {{/guestName}}
         </tr>
-        {{/posts}}
+        {{/toeicWords}}
         </tbody>
     </table>
     {{#pageCount}}

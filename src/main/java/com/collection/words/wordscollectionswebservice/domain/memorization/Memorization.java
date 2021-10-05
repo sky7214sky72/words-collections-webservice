@@ -1,11 +1,14 @@
 package com.collection.words.wordscollectionswebservice.domain.memorization;
 
 import com.collection.words.wordscollectionswebservice.domain.BaseTimeEntity;
+import com.collection.words.wordscollectionswebservice.domain.toeic.ToeicWords;
+import com.collection.words.wordscollectionswebservice.domain.user.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Optional;
 
 @Getter
 @NoArgsConstructor
@@ -15,19 +18,17 @@ public class Memorization extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 500, nullable = false)
-    private String word;
+    @ManyToOne
+    @JoinColumn(name="WORDS_ID")
+    private ToeicWords toeicWords;
 
-    @Column(nullable = false)
-    private String email;
-
-    @Column(nullable = false)
-    private String name;
+    @ManyToOne
+    @JoinColumn(name="USER_ID")
+    private User user;
 
     @Builder
-    public Memorization(String word, String email, String name){
-        this.word = word;
-        this.email = email;
-        this.name = name;
+    public Memorization(ToeicWords toeicWords, User user){
+        this.toeicWords = toeicWords;
+        this.user = user;
     }
 }

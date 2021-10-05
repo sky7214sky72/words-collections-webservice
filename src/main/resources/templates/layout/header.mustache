@@ -24,7 +24,6 @@
                 <a href="/" class="logo"><strong>토익</strong> 단어장!</a>
                 {{#guestName}}
                     <input type="hidden" id="hidden-email" value="{{guestName}}"/>
-                    <input type="hidden" id="hidden-name" value="{{guName}}"/>
                     <ul class="icons">
                         <li><h3>ID:<strong>{{guestName}}</strong></h3></li>
                         <li><input type="button" value="Logout" id = "btn-logout" class="primary" /></li>
@@ -33,7 +32,6 @@
                 {{^guestName}}
                     {{#adminName}}
                         <input type="hidden" id="hidden-email" value="{{adminName}}"/>
-                        <input type="hidden" id="hidden-name" value="{{adName}}"/>
                         <ul class="icons">
                             <li><h3>ID:<strong>{{adminName}}</strong></h3></li>
                             <li><input type="button" value="Logout" id = "btn-logout" class="primary" /></li>

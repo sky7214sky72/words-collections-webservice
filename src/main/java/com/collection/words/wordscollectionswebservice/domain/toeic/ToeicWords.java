@@ -1,4 +1,4 @@
-package com.collection.words.wordscollectionswebservice.domain.posts;
+package com.collection.words.wordscollectionswebservice.domain.toeic;
 
 import com.collection.words.wordscollectionswebservice.domain.BaseTimeEntity;
 import lombok.Builder;
@@ -10,10 +10,11 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Posts extends BaseTimeEntity {
+public class ToeicWords{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "WORDS_ID")
     private Long id;
 
     @Column(length = 500, nullable = false)
@@ -23,7 +24,7 @@ public class Posts extends BaseTimeEntity {
     private String meaning;
 
     @Builder
-    public Posts(String word, String meaning){
+    public ToeicWords(String word, String meaning){
         this.word = word;
         this.meaning = meaning;
     }

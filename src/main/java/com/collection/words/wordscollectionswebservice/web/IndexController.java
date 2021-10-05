@@ -3,7 +3,7 @@ package com.collection.words.wordscollectionswebservice.web;
 import com.collection.words.wordscollectionswebservice.config.auth.LoginUser;
 import com.collection.words.wordscollectionswebservice.config.auth.dto.SessionUser;
 import com.collection.words.wordscollectionswebservice.service.memorization.MemorizationService;
-import com.collection.words.wordscollectionswebservice.service.posts.PostsService;
+import com.collection.words.wordscollectionswebservice.service.toeic.ToeicWordsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -18,24 +18,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class IndexController {
 
-    private final PostsService postsService;
+    private final ToeicWordsService toeicWordsService;
     private final MemorizationService memorizationService;
 
     @GetMapping("/")
     public String wordList(Model model,@LoginUser SessionUser user, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable){
-        int pageCount = postsService.pageCount(pageable);
-        int pageNumber = postsService.findAll(pageable).getNumber() + 1;
-        Long totalCount = postsService.findAll(pageable).getTotalElements();
+        int pageCount = toeicWordsService.pageCount(pageable);
+        int pageNumber = toeicWordsService.findAll(pageable).getNumber() + 1;
+        Long totalCount = toeicWordsService.findAll(pageable).getTotalElements();
         if (user != null){
             if(user.getRole().equals("ROLE_ADMIN")){
                 model.addAttribute("adminName",user.getEmail());
-                model.addAttribute("adName",user.getName());
             }else{
                 model.addAttribute("guestName",user.getEmail());
-                model.addAttribute("guName",user.getName());
             }
         }
-        model.addAttribute("posts",postsService.findAll(pageable));
+        model.addAttribute("toeicWords", toeicWordsService.findAll(pageable));
         model.addAttribute("pageCount",pageCount);
         model.addAttribute("pageNumber",pageNumber);
         model.addAttribute("totalCount",totalCount);
@@ -56,10 +54,9 @@ public class IndexController {
     public String wordProgress(Model model,@LoginUser SessionUser user, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable){
         if (user != null){
             model.addAttribute("guestName",user.getEmail());
-            model.addAttribute("guName",user.getName());
         }
-        Long totalCount = postsService.findAll(pageable).getTotalElements();
-        Long memoCount = memorizationService.memoCount(user.getEmail());
+        Long totalCount = toeicWordsService.findAll(pageable).getTotalElements();
+        Long memoCount = memorizationService.memoCount(user.getUser_id());
         model.addAttribute("totalCount",totalCount);
         model.addAttribute("memoCount",memoCount);
         return "progresspage";
