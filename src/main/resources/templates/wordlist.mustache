@@ -7,9 +7,9 @@
         <tr>
             <th>단어</th>
             <th>의미</th>
-            {{#guestName}}
+            {{#guestEmail}}
                 <th>암기여부</th>
-            {{/guestName}}
+            {{/guestEmail}}
         </tr>
         </thead>
         <tbody id="toeicList">
@@ -17,9 +17,9 @@
         <tr>
             <td><p name="word">{{word}}</p></td>
             <td><p name="meaning">{{meaning}}</p></td>
-            {{#guestName}}
+            {{#guestEmail}}
                 <td><input type="button" value="V" id = "{{id}}" class="primary check-word" /></td>
-            {{/guestName}}
+            {{/guestEmail}}
         </tr>
         {{/toeicWords}}
         </tbody>
@@ -33,7 +33,7 @@
     {{/pageCount}}
     <ul class="pagination" id="js-pagination">
     </ul>
-    {{#adminName}}
+    {{#adminEmail}}
         <ul class="actions">
             <li><a href="/api/words/save" class="button primary">단어 업로드</a></li>
         </ul>
@@ -50,6 +50,6 @@
                 </form>
             </li>
         </ul>
-    {{/adminName}}
+    {{/adminEmail}}
 </div>
 {{>layout/sidebar}}

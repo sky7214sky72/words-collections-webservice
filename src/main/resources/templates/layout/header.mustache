@@ -21,27 +21,27 @@
 
             <!-- Header -->
             <header id="header">
-                <a href="/" class="logo"><strong>토익</strong> 단어장!!!!!</a>
-                {{#guestName}}
-                    <input type="hidden" id="hidden-email" value="{{guestName}}"/>
+                <a href="/" class="logo"><strong>토익</strong> 단어장</a>
+                {{#guestEmail}}
+                    <input type="hidden" id="hidden-email" value="{{guestEmail}}"/>
                     <ul class="icons">
-                        <li><h3>ID:<strong>{{guestName}}</strong></h3></li>
+                        <li><h3>ID:<strong>{{guestEmail}}</strong></h3></li>
                         <li><input type="button" value="Logout" id = "btn-logout" class="primary" /></li>
                     </ul>
-                {{/guestName}}
-                {{^guestName}}
-                    {{#adminName}}
-                        <input type="hidden" id="hidden-email" value="{{adminName}}"/>
+                {{/guestEmail}}
+                {{^guestEmail}}
+                    {{#adminEmail}}
+                        <input type="hidden" id="hidden-email" value="{{adminEmail}}"/>
                         <ul class="icons">
                             <li><h3>ID:<strong>{{adminName}}</strong></h3></li>
                             <li><input type="button" value="Logout" id = "btn-logout" class="primary" /></li>
                         </ul>
-                    {{/adminName}}
-                    {{^adminName}}
+                    {{/adminEmail}}
+                    {{^adminEmail}}
                         <ul class="icons">
                             <li><input type="button" value="구글 로그인" id = "btn-google" class="google" /></li>
                             <li><input type="button" value="네이버 로그인" id = "btn-naver" class="naver" /></li>
                         </ul>
-                    {{/adminName}}
-                {{/guestName}}
+                    {{/adminEmail}}
+                {{/guestEmail}}
             </header>

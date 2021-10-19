@@ -18,14 +18,14 @@
             </header>
             <ul>
                 <li><a href="/">Home</a></li>
-                {{#guestName}}
+                {{#guestEmail}}
                     <li><a href="/api/my/progress">학습현황</a></li>
-                {{/guestName}}
-                {{^guestName}}
-                    {{#adminName}}
+                {{/guestEmail}}
+                {{^guestEmail}}
+                    {{#adminEmail}}
                         <li><a href="/api/my/progress">학습현황</a></li>
-                    {{/adminName}}
-                {{/guestName}}
+                    {{/adminEmail}}
+                {{/guestEmail}}
 <!--                <li>
                     <span class="opener">토이 프로젝트</span>
                     <ul>

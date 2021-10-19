@@ -28,9 +28,9 @@ public class IndexController {
         Long totalCount = toeicWordsService.findAll(pageable).getTotalElements();
         if (user != null){
             if(user.getRole().equals("ROLE_ADMIN")){
-                model.addAttribute("adminName",user.getEmail());
+                model.addAttribute("adminEmail",user.getEmail());
             }else{
-                model.addAttribute("guestName",user.getEmail());
+                model.addAttribute("guestEmail",user.getEmail());
             }
         }
         model.addAttribute("toeicWords", toeicWordsService.findAll(pageable));
@@ -53,7 +53,8 @@ public class IndexController {
     @GetMapping("/api/my/progress")
     public String wordProgress(Model model,@LoginUser SessionUser user, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable){
         if (user != null){
-            model.addAttribute("guestName",user.getEmail());
+            model.addAttribute("guestEmail",user.getEmail());
+            model.addAttribute("guestName",user.getName());
         }
         Long totalCount = toeicWordsService.findAll(pageable).getTotalElements();
         Long memoCount = memorizationService.memoCount(user.getUser_id());
