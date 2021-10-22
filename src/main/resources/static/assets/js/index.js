@@ -105,8 +105,9 @@ var main = {
             contentType: 'application/json; charset=utf-8',
             data: data
         }).done(function(){
-            alert('암기성공!');
             document.getElementById(memorize_value).value = 'X';
+            document.getElementById(memorize_value).classList.remove('primary');
+            document.getElementById(memorize_value).className+=' naver';
             this.memorizeRead();
         }).fail(function (error){
             alert(JSON.stringify(error));
@@ -123,9 +124,10 @@ var main = {
         }).done(function(result){
             for(var i=0;i<result.length;i++){
                 memo = result[i].word_id;
-                console.log(memo);
                 if(document.getElementById(memo) != null){
                     document.getElementById(memo).value = 'X';
+                    document.getElementById(memo).classList.remove('primary');
+                    document.getElementById(memo).className+=' naver';
                 }
             }
         }).fail(function (error){
@@ -139,8 +141,9 @@ var main = {
             url: '/api/memorize/'+word,
             contentType: 'application/json; charset=utf-8',
         }).done(function(){
-            alert('암기취소');
             document.getElementById(memorize_value).value = 'V';
+            document.getElementById(memorize_value).classList.remove('naver');
+            document.getElementById(memorize_value).className+=' primary';
             this.memorizeRead();
         }).fail(function (error){
             alert(JSON.stringify(error));

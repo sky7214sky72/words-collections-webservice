@@ -18,7 +18,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                     .authorizeRequests()
                     .antMatchers("/","/static/assert/**","/static/images/**","/h2-console/**","/profile").permitAll()
-                    .antMatchers("/api/words/**").hasRole(Role.ADMIN.name())
+                    .antMatchers("/api/words/**","/api/adminPage").hasRole(Role.ADMIN.name())
                     .antMatchers("/api/my/**").hasRole(Role.GUEST.name())
                 .and()
                     .logout()

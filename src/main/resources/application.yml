@@ -25,6 +25,7 @@ spring:
       "real" : "real,real-db,oauth"
       "real1" : "real1,real-db,oauth"
       "real2" : "real2,real-db,oauth"
+    include: oauth
 
   session:
     store-type: jdbc

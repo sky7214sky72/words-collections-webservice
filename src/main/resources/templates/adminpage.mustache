@@ -1,0 +1,22 @@
+{{>layout/header}}
+<br/>
+<h4>관리자 페이지</h4>
+<div class="table-wrapper">
+    <ul class="actions">
+        <li><a href="/api/words/save" class="button primary">단어 업로드</a></li>
+    </ul>
+    <ul class="actions">
+        <li>
+            <input type="file" accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" id="file" required/>
+        </li>
+        <li>
+            <input type="button" value="엑셀 업로드" id = "btn-excel" class="button icon solid fa-download" />
+        </li>
+        <li>
+            <form action="/api/words/excelDown" method="post">
+                <input type="submit" value="양식 다운로드" id = "btn-xlsdown" class="button icon solid fa-download" />
+            </form>
+        </li>
+    </ul>
+</div>
+{{>layout/sidebar}}

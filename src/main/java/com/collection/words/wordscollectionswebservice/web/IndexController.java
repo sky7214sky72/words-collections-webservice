@@ -63,4 +63,13 @@ public class IndexController {
         return "progresspage";
     }
 
+    @GetMapping("/api/adminPage")
+    public String adminPage(Model model,@LoginUser SessionUser user){
+        if (user != null){
+            model.addAttribute("adminEmail",user.getEmail());
+            model.addAttribute("adminEmail",user.getName());
+        }
+        return "adminpage";
+    }
+
 }
